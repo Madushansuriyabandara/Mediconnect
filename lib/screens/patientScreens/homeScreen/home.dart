@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mediconnect/screens/patientScreens/homeScreen/appointmentDetails.dart'; // Update the path accordingly
+import 'package:mediconnect/themes/appointmentStatusColors.dart'; // Import the color file
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:mediconnect/themes/switchUser.dart'; // Import switchUser
+import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart'; // Update the path as per your project structure
+
 
 class HomeScreen extends StatelessWidget {
   final String userEmail = "johndoe@example.com";
@@ -16,47 +20,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.switch_account),
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text('Switch Account'),
-                    content: SingleChildScrollView(
-                      child: ListBody(
-                        children: <Widget>[
-                          ListTile(
-                            title: const Text('John Doe'),
-                            subtitle:
-                                const Text('john.doe@example.com (Patient)'),
-                            onTap: () {
-                              // Switch to this account
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ListTile(
-                            title: const Text('Dr. Smith'),
-                            subtitle:
-                                const Text('dr.smith@example.com (Doctor)'),
-                            onTap: () {
-                              // Switch to this account
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          // Add more users here
-                        ],
-                      ),
-                    ),
-                    actions: [
-                      TextButton(
-                        child: const Text('Cancel'),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
+              switchUser(context);
             },
           ),
         ],
@@ -79,7 +43,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             AppointmentButton(
-              color: Colors.yellow,
+              color: getAppointmentStatusColor('Queued'),
               text: 'John Doe - Chest Pain',
               onPressed: () {
                 Navigator.push(
@@ -102,69 +66,69 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             AppointmentButton(
-              color: Colors.green,
+              color: getAppointmentStatusColor('Upcoming'),
               text: 'Simon Powel - Leg injury',
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => AppointmentDetailsScreen(
-                      appointmentName: 'Chest Pain',
-                      doctorName: 'Dr. John Doe',
-                      specialty: 'Cardiac Surgeon',
-                      appointmentTime: '10:30am - 11:00am',
+                      appointmentName: 'Leg injury',
+                      doctorName: 'Dr. Simon Powel',
+                      specialty: 'Orthopedic Surgeon',
+                      appointmentTime: '11:00am - 11:30am',
                       appointmentDate: 'February 15, 2024',
                       location: 'Suwa Piyasa - Kurunegala',
-                      appointmentNumber: 34,
-                      currentNumber: 23,
-                      turnTime: '10:43am',
-                      appointmentStatus: 'Queued',
+                      appointmentNumber: 35,
+                      currentNumber: 25,
+                      turnTime: '11:15am',
+                      appointmentStatus: 'Upcoming',
                     ),
                   ),
                 );
               },
             ),
             AppointmentButton(
-              color: Colors.red,
+              color: getAppointmentStatusColor('Missed'),
               text: 'Eddie Brownrick - Knee pain',
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => AppointmentDetailsScreen(
-                      appointmentName: 'Chest Pain',
-                      doctorName: 'Dr. John Doe',
-                      specialty: 'Cardiac Surgeon',
-                      appointmentTime: '10:30am - 11:00am',
+                      appointmentName: 'Knee pain',
+                      doctorName: 'Dr. Eddie Brownrick',
+                      specialty: 'Orthopedic Surgeon',
+                      appointmentTime: '11:30am - 12:00pm',
                       appointmentDate: 'February 15, 2024',
                       location: 'Suwa Piyasa - Kurunegala',
-                      appointmentNumber: 34,
-                      currentNumber: 23,
-                      turnTime: '10:43am',
-                      appointmentStatus: 'Queued',
+                      appointmentNumber: 36,
+                      currentNumber: 26,
+                      turnTime: '11:45am',
+                      appointmentStatus: 'Missed',
                     ),
                   ),
                 );
               },
             ),
             AppointmentButton(
-              color: Colors.blue,
+              color: getAppointmentStatusColor('Completed'),
               text: 'Richard Ryman - Eye',
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => AppointmentDetailsScreen(
-                      appointmentName: 'Chest Pain',
-                      doctorName: 'Dr. John Doe',
-                      specialty: 'Cardiac Surgeon',
-                      appointmentTime: '10:30am - 11:00am',
+                      appointmentName: 'Eye Checkup',
+                      doctorName: 'Dr. Richard Ryman',
+                      specialty: 'Ophthalmologist',
+                      appointmentTime: '12:00pm - 12:30pm',
                       appointmentDate: 'February 15, 2024',
                       location: 'Suwa Piyasa - Kurunegala',
-                      appointmentNumber: 34,
-                      currentNumber: 23,
-                      turnTime: '10:43am',
-                      appointmentStatus: 'Queued',
+                      appointmentNumber: 37,
+                      currentNumber: 27,
+                      turnTime: '12:15pm',
+                      appointmentStatus: 'Completed',
                     ),
                   ),
                 );
@@ -173,34 +137,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medication_sharp),
-            label: 'Prescriptions',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        selectedLabelStyle: TextStyle(fontSize: 12),
-        unselectedLabelStyle: TextStyle(fontSize: 12),
-        currentIndex: 2, // Home is selected
-        selectedItemColor: Color.fromRGBO(41, 145, 168, 1),
+      bottomNavigationBar: PatientBottomNavBar(
+        currentIndex: 2,
         onTap: (index) {
           // Handle bottom navigation tap
         },

@@ -77,7 +77,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               width: double.infinity,
-              color: StatusColors.getStatusColor(appointmentStatus),  // Use the status color
+              color: getAppointmentStatusColor(appointmentStatus),  // Use the status color method
               child: Center(
                 child: Text(
                   "Appointment Status: $appointmentStatus",
