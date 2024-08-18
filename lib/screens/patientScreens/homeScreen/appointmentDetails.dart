@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediconnect/themes/appointmentStatusColors.dart';  // Adjust the import path
 
 class AppointmentDetailsScreen extends StatelessWidget {
   final String appointmentName;
@@ -25,22 +26,6 @@ class AppointmentDetailsScreen extends StatelessWidget {
     required this.turnTime,
     required this.appointmentStatus,
   });
-
-  // Function to determine status color
-  Color getStatusColor(String status) {
-    switch (status) {
-      case "Queued":
-        return Colors.yellow;
-      case "Upcoming":
-        return Colors.green;
-      case "Overdue":
-        return Colors.red;
-      case "Waiting to Rate":
-        return Colors.blue;
-      default:
-        return Colors.grey;
-      }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +77,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               width: double.infinity,
-              color: getStatusColor(appointmentStatus),
+              color: StatusColors.getStatusColor(appointmentStatus),  // Use the status color
               child: Center(
                 child: Text(
                   "Appointment Status: $appointmentStatus",

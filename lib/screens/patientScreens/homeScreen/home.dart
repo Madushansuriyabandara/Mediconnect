@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mediconnect/screens/homeScreen/appointmentDetails.dart'; // Update the path accordingly
+import 'package:mediconnect/screens/patientScreens/homeScreen/appointmentDetails.dart'; // Update the path accordingly
 import 'package:qr_flutter/qr_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -177,8 +177,8 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.medication),
-            label: 'Medicines',
+            icon: Icon(Icons.medication_sharp),
+            label: 'Prescriptions',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -197,8 +197,10 @@ class HomeScreen extends StatelessWidget {
             label: 'Profile',
           ),
         ],
+        selectedLabelStyle: TextStyle(fontSize: 12),
+        unselectedLabelStyle: TextStyle(fontSize: 12),
         currentIndex: 2, // Home is selected
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Color.fromRGBO(41, 145, 168, 1),
         onTap: (index) {
           // Handle bottom navigation tap
         },

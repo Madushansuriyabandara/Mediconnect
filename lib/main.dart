@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/homeScreen/home.dart';  // Import the home.dart file
+import 'screens/patientScreens/homeScreen/home.dart';  // Import the home.dart file
 
 void main() {
   runApp(const MyApp());
