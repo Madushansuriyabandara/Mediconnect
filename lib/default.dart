@@ -63,7 +63,7 @@ class _AppState extends State<App> {
           _buildBottomNavigationBarItem(Icons.account_circle, 4),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: const Color.fromRGBO(41, 145, 168, 1),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: _onItemTapped,
