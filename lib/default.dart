@@ -29,20 +29,10 @@ class _AppState extends State<App> {
     const Text('Profile', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
-  BottomNavigationBarItem _buildBottomNavigationBarItem(IconData icon, int index) {
+  BottomNavigationBarItem _buildBottomNavigationBarItem(IconData icon, String label) {
     return BottomNavigationBarItem(
-      icon: Container(
-        width: _selectedIndex == index ? 0 : 0,
-        height: _selectedIndex == index ? 0 : 0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: _selectedIndex == index
-              ? const Color.fromARGB(255, 220, 173, 100)
-              : Colors.transparent,
-        ),
-        child: Icon(icon, size: 25),
-      ),
-      label: '',
+      icon:Icon(icon),
+      label: label,
     );
   }
 
@@ -56,16 +46,16 @@ class _AppState extends State<App> {
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         items: [
-          _buildBottomNavigationBarItem(Icons.task, 0), 
-          _buildBottomNavigationBarItem(Icons.message, 1),
-          _buildBottomNavigationBarItem(Icons.home, 2),
-          _buildBottomNavigationBarItem(Icons.notifications, 3),
-          _buildBottomNavigationBarItem(Icons.account_circle, 4),
+          _buildBottomNavigationBarItem(Icons.edit_calendar, 'Schedule'), 
+          _buildBottomNavigationBarItem(Icons.bar_chart, 'Stats'),
+          _buildBottomNavigationBarItem(Icons.home, 'Home'),
+          _buildBottomNavigationBarItem(Icons.notifications, 'Notifications'),
+          _buildBottomNavigationBarItem(Icons.person, 'Profile'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color.fromRGBO(41, 145, 168, 1),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        selectedLabelStyle: const TextStyle(fontSize: 12),
+        unselectedLabelStyle: const TextStyle(fontSize: 12),
         onTap: _onItemTapped,
       ),
     );
