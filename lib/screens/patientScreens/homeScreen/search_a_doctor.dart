@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart';
 
 class SearchDoctor extends StatelessWidget {
   final TextEditingController doctorNameController = TextEditingController();
@@ -12,12 +13,11 @@ class SearchDoctor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Search for a Doctor"),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 90, 230, 179),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Search by Doctor Name
             TextField(
@@ -71,6 +71,9 @@ class SearchDoctor extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
+            // Spacer to push the Search button to the bottom
+            Spacer(),
+
             // Search Button
             Center(
               child: ElevatedButton(
@@ -82,6 +85,13 @@ class SearchDoctor extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: PatientBottomNavBar(
+        currentIndex: 1, // Index for the 'Search' tab
+        onTap: (index) {
+          // Implement onTap callback functionality here
+          // The switch-case in the PatientBottomNavBar will handle the navigation
+        },
       ),
     );
   }

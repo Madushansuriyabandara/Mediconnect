@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/patientScreens/homeScreen/home.dart';  // Import the home.dart file
+import 'screens/patientScreens/homeScreen/home.dart'; // Import the home.dart file
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(), // Set the home screen to the HomeScreen widget
+      home: const HomeScreen(),
+      debugShowCheckedModeBanner:
+          false, // Set the home screen to the HomeScreen widget
     );
   }
 }
