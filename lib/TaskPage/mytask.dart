@@ -478,8 +478,3 @@ class _CalendarViewState extends State<TaskPage> {
 }
 
 
-void main() {
-  runApp(const MaterialApp(
-    home: TaskPage(),
-  ));
-}
