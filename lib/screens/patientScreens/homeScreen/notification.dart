@@ -7,7 +7,6 @@ class Notifications extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
-        backgroundColor: const Color.fromARGB(255, 90, 230, 179),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20.0),
