@@ -83,7 +83,7 @@ class Notifications extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: PatientBottomNavBar(
-        currentIndex: 1, // Index for the 'Search' tab
+        currentIndex: 3, // Index for the 'Search' tab
         onTap: (index) {
           // Implement onTap callback functionality here
           // The switch-case in the PatientBottomNavBar will handle the navigation

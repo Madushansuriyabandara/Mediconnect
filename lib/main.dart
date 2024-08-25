@@ -21,7 +21,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  Future<void> _checkSession(BuildContext context) async {
+  /*Future<void> _checkSession(BuildContext context) async {
     final currentDeviceId = await MobileDeviceIdentifier().getDeviceId();
     const storedDeviceId = ''; // Retrieve this from local storage
 
@@ -61,6 +61,14 @@ class MyApp extends StatelessWidget {
         '/doctorRegistration': (context) => DoctorRegistrationScreen(),
         '/patientRegistration': (context) => PatientRegistrationForm(),
       },
+    );
+  }*/
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }

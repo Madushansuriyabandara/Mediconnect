@@ -76,10 +76,20 @@ class SearchDoctor extends StatelessWidget {
             // Search Button
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // search functionality here
-                },
-                child: const Text('Search'),
+                onPressed: () {},
+                child: const Text(
+                  'Search',
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 150, vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    side: BorderSide(
+                        color: Colors.black, width: 2.0), // Black border
+                  ),
+                ),
               ),
             ),
           ],
