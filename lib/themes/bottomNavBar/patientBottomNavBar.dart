@@ -3,7 +3,7 @@ import 'package:mediconnect/screens/patientScreens/homeScreen/prescription.dart'
 import 'package:mediconnect/screens/patientScreens/homeScreen/home.dart';
 import 'package:mediconnect/screens/patientScreens/homeScreen/notification.dart';
 import 'package:mediconnect/screens/patientScreens/homeScreen/profile.dart';
-import 'package:mediconnect/screens/patientScreens/homeScreen/search_a_doctor.dart';
+import 'package:mediconnect/screens/patientScreens/searchScreen/search_a_doctor.dart';
 
 class PatientBottomNavBar extends StatelessWidget {
   final int currentIndex;
