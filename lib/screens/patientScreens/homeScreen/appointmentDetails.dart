@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mediconnect/themes/appointmentStatusColors.dart';  // Adjust the import path
+import 'package:mediconnect/screens/patientScreens/homeScreen/rate.dart';
+import 'package:mediconnect/themes/appointmentStatusColors.dart'; // Adjust the import path
 
 class AppointmentDetailsScreen extends StatelessWidget {
   final String appointmentName;
@@ -42,7 +43,8 @@ class AppointmentDetailsScreen extends StatelessWidget {
               leading: const Icon(Icons.person, size: 40),
               title: Text(
                 "$doctorName - $appointmentName",
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               subtitle: Text("$doctorName($specialty)"),
             ),
@@ -77,7 +79,8 @@ class AppointmentDetailsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               width: double.infinity,
-              color: getAppointmentStatusColor(appointmentStatus),  // Use the status color method
+              color: getAppointmentStatusColor(
+                  appointmentStatus), // Use the status color method
               child: Center(
                 child: Text(
                   "Appointment Status: $appointmentStatus",
@@ -94,11 +97,19 @@ class AppointmentDetailsScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Handle rate action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RatePage(
+                          doctorName: 'Dr. John Doe',
+                        ),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 10),
                   ),
                   child: const Text(
                     "Rate",
@@ -111,7 +122,8 @@ class AppointmentDetailsScreen extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 10),
                   ),
                   child: const Text(
                     "Remove Appointment",

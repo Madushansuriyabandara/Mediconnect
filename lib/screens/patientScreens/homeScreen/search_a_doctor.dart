@@ -13,7 +13,6 @@ class SearchDoctor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Search for a Doctor"),
-        backgroundColor: const Color.fromARGB(255, 90, 230, 179),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -78,7 +77,7 @@ class SearchDoctor extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Implement search functionality here
+                  // search functionality here
                 },
                 child: const Text('Search'),
               ),

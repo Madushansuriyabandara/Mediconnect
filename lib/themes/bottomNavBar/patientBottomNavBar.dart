@@ -46,7 +46,7 @@ class PatientBottomNavBar extends StatelessWidget {
         currentIndex: currentIndex,
         selectedItemColor: const Color.fromRGBO(41, 145, 168, 1),
         onTap: (Index) {
-          onTap(Index);
+          onTap(currentIndex);
           switch (Index) {
             case 0:
               Navigator.push(
