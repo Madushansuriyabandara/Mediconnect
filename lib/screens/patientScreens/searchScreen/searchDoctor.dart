@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediconnect/screens/patientScreens/searchScreen/searchResultPage.dart';
 import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart';
 
 class SearchDoctor extends StatelessWidget {
@@ -76,7 +77,30 @@ class SearchDoctor extends StatelessWidget {
             // Search Button
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchResultsPage(
+                        doctorName: doctorNameController.text.isEmpty
+                            ? null
+                            : doctorNameController.text,
+                        disease: diseaseController.text.isEmpty
+                            ? null
+                            : diseaseController.text,
+                        medicalCenter: medicalCenterController.text.isEmpty
+                            ? null
+                            : medicalCenterController.text,
+                        date: dateController.text.isEmpty
+                            ? null
+                            : dateController.text,
+                        time: timeController.text.isEmpty
+                            ? null
+                            : timeController.text,
+                      ),
+                    ),
+                  );
+                },
                 child: const Text(
                   'Search',
                   style: TextStyle(color: Colors.black),
@@ -97,10 +121,7 @@ class SearchDoctor extends StatelessWidget {
       ),
       bottomNavigationBar: PatientBottomNavBar(
         currentIndex: 1, // Index for the 'Search' tab
-        onTap: (index) {
-          // Implement onTap callback functionality here
-          // The switch-case in the PatientBottomNavBar will handle the navigation
-        },
+        onTap: (index) {},
       ),
     );
   }
