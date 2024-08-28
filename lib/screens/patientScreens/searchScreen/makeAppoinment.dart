@@ -10,7 +10,7 @@ class AppointmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    //final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -34,13 +34,13 @@ class AppointmentPage extends StatelessWidget {
             Row(
               children: [
                 Icon(Icons.location_on),
-                SizedBox(width: 8),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      // Handle See Location press
-                    },
-                    child: Text('See Location'),
+                TextButton(
+                  onPressed: () {
+                    // Handle See Location press
+                  },
+                  child: Text(
+                    'See Location',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ],
@@ -95,6 +95,9 @@ class AppointmentPage extends StatelessWidget {
                   child: Text(
                     'In-person',
                     style: TextStyle(color: Colors.black),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 116, 198, 236),
                   ),
                 ),
                 ElevatedButton(

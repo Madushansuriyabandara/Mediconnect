@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class PatientRegistrationForm extends StatefulWidget {
   @override
-  _PatientRegistrationFormState createState() => _PatientRegistrationFormState();
+  _PatientRegistrationFormState createState() =>
+      _PatientRegistrationFormState();
 }
 
 class _PatientRegistrationFormState extends State<PatientRegistrationForm> {
@@ -19,13 +20,13 @@ class _PatientRegistrationFormState extends State<PatientRegistrationForm> {
   final _postalCodeController = TextEditingController();
   final _nicController = TextEditingController();
   final _occupationController = TextEditingController();
-  
+
   // Variables for dropdowns and time pickers
   String? _selectedGender;
   TimeOfDay? _breakfastTime;
   TimeOfDay? _lunchTime;
   TimeOfDay? _dinnerTime;
-  String? _uploadedReportPath;
+  //String? _uploadedReportPath;
 
   // Gender options
   final List<String> _genders = ['Male', 'Female', 'Other'];
@@ -153,7 +154,9 @@ class _PatientRegistrationFormState extends State<PatientRegistrationForm> {
                     Expanded(
                       child: ListTile(
                         title: Text('Breakfast'),
-                        trailing: Text(_breakfastTime == null ? 'Set Time' : _breakfastTime!.format(context)),
+                        trailing: Text(_breakfastTime == null
+                            ? 'Set Time'
+                            : _breakfastTime!.format(context)),
                         onTap: () async {
                           TimeOfDay? selectedTime = await showTimePicker(
                             context: context,
@@ -174,7 +177,9 @@ class _PatientRegistrationFormState extends State<PatientRegistrationForm> {
                     Expanded(
                       child: ListTile(
                         title: Text('Lunch'),
-                        trailing: Text(_lunchTime == null ? 'Set Time' : _lunchTime!.format(context)),
+                        trailing: Text(_lunchTime == null
+                            ? 'Set Time'
+                            : _lunchTime!.format(context)),
                         onTap: () async {
                           TimeOfDay? selectedTime = await showTimePicker(
                             context: context,
@@ -195,7 +200,9 @@ class _PatientRegistrationFormState extends State<PatientRegistrationForm> {
                     Expanded(
                       child: ListTile(
                         title: Text('Dinner'),
-                        trailing: Text(_dinnerTime == null ? 'Set Time' : _dinnerTime!.format(context)),
+                        trailing: Text(_dinnerTime == null
+                            ? 'Set Time'
+                            : _dinnerTime!.format(context)),
                         onTap: () async {
                           TimeOfDay? selectedTime = await showTimePicker(
                             context: context,
