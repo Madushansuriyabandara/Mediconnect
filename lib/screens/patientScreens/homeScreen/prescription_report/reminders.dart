@@ -190,19 +190,148 @@ class _SetRemindersPageState extends State<SetRemindersPage> {
 }
 
 class MyRemindersPage extends StatelessWidget {
-  final List<Map<String, dynamic>> myReminders = [];
+  final List<Map<String, dynamic>> myReminders = [
+    {
+      'medicine': 'Panadol - 5mg',
+      'intake': 'After Breakfast',
+      'time': '8:00 AM',
+    },
+    {
+      'medicine': 'Digene - 5mg',
+      'intake': 'Before Lunch',
+      'time': '12:30 PM',
+    },
+    {
+      'medicine': 'Pantodac - 15mg',
+      'intake': 'After Lunch',
+      'time': '2.00 PM',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("My Reminders Page"));
+    return ListView.builder(
+      itemCount: myReminders.length,
+      itemBuilder: (context, index) {
+        final reminder = myReminders[index];
+        return Card(
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${reminder['medicine']}',
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  '${reminder["intake"]}',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      "Time: ",
+                      style: TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      '${reminder["time"]}',
+                      style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
 class PharmacyUsePage extends StatelessWidget {
-  final List<Map<String, dynamic>> pharmacyUse = [];
+  final List<Map<String, dynamic>> pharmacyReminders = [
+    {
+      'date': 'February 15, 2024',
+      'doctor': 'Dr. John Doe (Cardiac Surgeon)',
+      'prescriptions': [
+        {'medicine': 'Panadine 20mg', 'quantity': '10 tablets'},
+        {'medicine': 'Digene 5mg', 'quantity': '5 tablets'},
+        {'medicine': 'Pantodac 10mg', 'quantity': '10 tablets'},
+      ]
+    },
+    {
+      'date': 'January 15, 2024',
+      'doctor': 'Dr. Will Churchill (Orthopedic Surgeon)',
+      'prescriptions': [
+        {'medicine': 'Panadine 20mg', 'quantity': '10 tablets'},
+        {'medicine': 'Digene 5mg', 'quantity': '5 tablets'},
+        {'medicine': 'Pantodac 10mg', 'quantity': '10 tablets'},
+      ]
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Pharmacy Use Page"));
+    return ListView.builder(
+      itemCount: pharmacyReminders.length,
+      itemBuilder: (context, index) {
+        final reminder = pharmacyReminders[index];
+        return Card(
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  reminder['date'],
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  reminder['doctor'],
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black54),
+                ),
+                const SizedBox(height: 10),
+                ...reminder['prescriptions'].map((prescription) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Text(
+                      '${prescription['medicine']} - ${prescription['quantity']}',
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  );
+                }).toList(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
