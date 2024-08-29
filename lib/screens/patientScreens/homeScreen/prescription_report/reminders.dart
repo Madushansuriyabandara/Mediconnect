@@ -48,26 +48,26 @@ class Reminders extends StatelessWidget {
 
 class SetRemindersPage extends StatefulWidget {
   @override
-  _SetRemindersPageState createState() => _SetRemindersPageState();
+  State<SetRemindersPage> createState() => _SetRemindersPageState();
 }
 
 class _SetRemindersPageState extends State<SetRemindersPage> {
   final List<Map<String, dynamic>> reminders = [
     {
       'medicine': 'Panadol - 5mg',
-      'intake': 'Intake every 6 hours - before meal',
+      'intake': 'Intake: every 6 hours - before meal',
       'startTime': TimeOfDay(hour: 6, minute: 0),
       'endTime': TimeOfDay(hour: 0, minute: 0),
     },
     {
       'medicine': 'Digene - 5mg',
-      'intake': 'Intake 3 times a day - before meal',
+      'intake': 'Intake: 3 times a day - before meal',
       'startTime': TimeOfDay(hour: 6, minute: 0),
       'endTime': TimeOfDay(hour: 0, minute: 0),
     },
     {
       'medicine': 'Pantodac - 15mg',
-      'intake': 'Intake every 8 hours - after meal',
+      'intake': 'Intake: every 8 hours - after meal',
       'startTime': TimeOfDay(hour: 6, minute: 0),
       'endTime': TimeOfDay(hour: 0, minute: 0),
     },
@@ -80,7 +80,17 @@ class _SetRemindersPageState extends State<SetRemindersPage> {
       initialTime: timeType == 'startTime'
           ? reminders[index]['startTime']
           : reminders[index]['endTime'],
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme:
+                ColorScheme.light(primary: Color.fromARGB(255, 96, 142, 180)),
+          ),
+          child: child!,
+        );
+      },
     );
+
     if (picked != null) {
       setState(() {
         if (timeType == 'startTime') {
@@ -93,8 +103,6 @@ class _SetRemindersPageState extends State<SetRemindersPage> {
   }
 
   String formatTimeOfDay(TimeOfDay time) {
-    final now = DateTime.now();
-    final dt = DateTime(now.year, now.month, now.day, time.hour, time.minute);
     final format = MaterialLocalizations.of(context).formatTimeOfDay(time);
     return format;
   }
@@ -102,65 +110,82 @@ class _SetRemindersPageState extends State<SetRemindersPage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: reminders.length,
-      itemBuilder: (context, index) {
-        final reminder = reminders[index];
-        return Card(
-          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${reminder['medicine']}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+        itemCount: reminders.length,
+        itemBuilder: (context, index) {
+          final reminder = reminders[index];
+          return Card(
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${reminder['medicine']}',
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  'Intake ${reminder['intake']}',
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                  const SizedBox(
+                    height: 6,
                   ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('Starting at'),
-                        TextButton(
-                          onPressed: () =>
-                              _selectTime(context, index, 'startTime'),
-                          child: Text(formatTimeOfDay(reminder['startTime'])),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('Ending at'),
-                        TextButton(
-                          onPressed: () =>
-                              _selectTime(context, index, 'endTime'),
-                          child: Text(formatTimeOfDay(reminder['endTime'])),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                  Text(
+                    '${reminder["intake"]}',
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        "Starting at",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.normal),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            _selectTime(context, index, 'startTime'),
+                        child: Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black)),
+                            child: Text(
+                              formatTimeOfDay(reminder['startTime']),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        "Ending at",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.normal),
+                      ),
+                      TextButton(
+                        onPressed: () => _selectTime(context, index, 'endTime'),
+                        child: Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black)),
+                            child: Text(
+                              formatTimeOfDay(reminder['endTime']),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        });
   }
 }
 

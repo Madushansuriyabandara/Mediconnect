@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediconnect/screens/startScreens/login.dart';
+import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -238,6 +239,13 @@ class Profile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: PatientBottomNavBar(
+        currentIndex: 4, // Index for the 'Search' tab
+        onTap: (index) {
+          // Implement onTap callback functionality here
+          // The switch-case in the PatientBottomNavBar will handle the navigation
+        },
       ),
     );
   }
