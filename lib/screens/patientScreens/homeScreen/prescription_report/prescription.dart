@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:mediconnect/screens/patientScreens/homeScreen/prescription_report/reminders.dart';
 import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart';
 
 class Prescriptions extends StatelessWidget {
@@ -86,61 +87,67 @@ class MyPrescriptionsPage extends StatelessWidget {
       itemCount: prescriptions.length,
       itemBuilder: (context, index) {
         final prescription = prescriptions[index];
-        return Card(
-          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  prescription['date'],
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+        return InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Reminders()));
+          },
+          child: Card(
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    prescription['date'],
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  prescription['doctor'],
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ...prescription['medications'].map<Widget>((medication) {
-                  return Text(
-                    medication,
+                  const SizedBox(height: 5),
+                  Text(
+                    prescription['doctor'],
                     style: const TextStyle(
                       fontSize: 14,
+                      fontWeight: FontWeight.w500,
                     ),
-                  );
-                }).toList(),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: LinearProgressIndicator(
-                        value: prescription['progress'] / 100,
-                        backgroundColor: Colors.grey[300],
-                        color: Colors.green,
+                  ),
+                  const SizedBox(height: 10),
+                  ...prescription['medications'].map<Widget>((medication) {
+                    return Text(
+                      medication,
+                      style: const TextStyle(
+                        fontSize: 14,
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text('${prescription['progress']}%'),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Wrap(
-                  spacing: 8.0,
-                  children: prescription['keywords'].map<Widget>((keyword) {
-                    return Chip(
-                      label: Text(keyword),
                     );
                   }).toList(),
-                ),
-              ],
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: LinearProgressIndicator(
+                          value: prescription['progress'] / 100,
+                          backgroundColor: Colors.grey[300],
+                          color: Colors.green,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text('${prescription['progress']}%'),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8.0,
+                    children: prescription['keywords'].map<Widget>((keyword) {
+                      return Chip(
+                        label: Text(keyword),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
             ),
           ),
         );

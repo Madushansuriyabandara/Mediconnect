@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mediconnect/screens/patientScreens/homeScreen/rate.dart';
+import 'package:mediconnect/screens/patientScreens/homeScreen/home/rate.dart';
 import 'package:mediconnect/themes/appointmentStatusColors.dart'; // Adjust the import path
 
 class AppointmentDetailsScreen extends StatelessWidget {

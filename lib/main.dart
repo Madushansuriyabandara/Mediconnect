@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 //import 'package:device_preview/device_preview.dart';
-import 'screens/patientScreens/homeScreen/home.dart'; // Import the home.dart file
+import 'screens/patientScreens/homeScreen/home/home.dart'; // Import the home.dart file
 import 'package:mobile_device_identifier/mobile_device_identifier.dart';
 import 'screens/doctorScreens/doctorRegistrationScreen.dart'; // Import Doctor Registration Screen
 import 'screens/patientScreens/patientRegistrationScreen.dart'; // Import Patient Registration Screen
