@@ -1,5 +1,6 @@
+import 'package:doctor/homepage/addtodaysplanbutton.dart';
 import 'package:doctor/homepage/nextpatent.dart';
-import 'package:doctor/homepage/task.dart';
+import 'package:doctor/homepage/todaytaskcontainer.dart';
 import 'package:flutter/material.dart';
 import 'elevatedbutton.dart';
 import 'viewdrop.dart';
@@ -117,10 +118,8 @@ class _HomeState extends State<Home> {
                           ),
                                 ),
                           ),
-            const SizedBox(
-              height: 300, // Adjust the height according to your layout needs
-              child: TaskBodyManager(),
-            ),
+            const TodayTaskContainer(confirmButtonStatus:false),
+            const AddTodaysTask(),
           ],
         ),
       ),

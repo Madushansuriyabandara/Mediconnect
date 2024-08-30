@@ -1,3 +1,5 @@
+import 'package:doctor/NotificationPage/notification.dart';
+import 'package:doctor/ProfilePage/profile.dart';
 import 'package:doctor/TaskPage/mytask.dart';
 import 'package:flutter/material.dart';
 import 'homepage/home.dart';
@@ -23,10 +25,10 @@ class _AppState extends State<App> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const TaskPage(),
-    const Text('Message Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const Text('Stats Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     const Home(),
-    const Text('Notification', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    const Text('Profile', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const Notifications(),
+    const Profile(),
   ];
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(IconData icon, String label) {
