@@ -1,4 +1,4 @@
-import 'package:doctor/RegistrationPage/registration.dart';
+import 'package:doctor/RegistrationPage/regi.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
