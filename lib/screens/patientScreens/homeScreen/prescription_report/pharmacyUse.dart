@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediconnect/themes/bottomNavBar/patientBottomNavBar.dart';
 
 void main() {
   runApp(MyApp());
@@ -63,28 +64,11 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.notifications),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.person),
-              onPressed: () {},
-            ),
-          ],
-        ),
+      bottomNavigationBar: PatientBottomNavBar(
+        currentIndex: 0,
+        onTap: (index) {
+          // Handle bottom navigation tap
+        },
       ),
     );
   }

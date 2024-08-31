@@ -139,7 +139,6 @@ class MyPrescriptionsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Wrap(
-                    spacing: 8.0,
                     children: prescription['keywords'].map<Widget>((keyword) {
                       return Chip(
                         label: Text(keyword),
